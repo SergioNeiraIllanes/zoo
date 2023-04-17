@@ -1,0 +1,19 @@
+{% if form.errors %}
+    <p>Error en las credenciales</p>
+{% endif %}
+
+{% if next %}
+    {% if not user.is_authenticate %}
+        <p> Necesita logearse</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="login">
+    <input type="hidden" name="next" value="{% url 'customauth:home' %}">
+</form>
+
+<a href="{% url 'customauth:signup' %}">Registrarse</a>
+<a href="{% url 'password_reset' %}">Olvidé la clave</a>

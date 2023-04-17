@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  db:
+    build:
+      context: .
+      dockerfile: docker/db/Dockerfile
+    ports:
+      - "5432:5432"
+    tty: true
+    container_name: db
+  webapp:
+    build:
+      dockerfile: docker/webapp/Dockerfile
+    ports:
+      - "8003:8001"
+    volumes:
+      - .:/webapp
+    depends_on:
+      - db
+    tty: true
+    container_name: webapp
