@@ -1,0 +1,26 @@
+<table>
+    <thead>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Detalle
+        </th>
+    </thead>
+    <tbody>
+        {% for permission in permissions %}
+        <tr>
+            <td>
+                {{permission.name}}
+            </td>
+            <td>
+                <button type="button">
+                    <a href="{% url 'customauth:permission-detail' permission.id %}">
+                        Ver detalle
+                    </a>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

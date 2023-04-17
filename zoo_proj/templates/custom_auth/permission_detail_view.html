@@ -1,0 +1,13 @@
+<form method="POST" action="{% url 'customauth:permission-delete' %}">
+    {% csrf_token %}
+    <input type="hidden" value="{{permission.id}}" name="id">
+    <label for="name1">
+        Nombre
+    </label>
+    <input type="text" value="{{permission.name}}" name="name" id="name1" readonly>
+    <label for="codename1">
+        Código
+    </label>
+    <input type="text" value="{{permission.codename}}" name="codename" id="codename1" readonly>
+    <input type="submit" value="Eliminar">
+</form>

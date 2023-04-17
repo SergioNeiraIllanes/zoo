@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from zoo_proj.apps.custom_auth.forms.signup_form import SignupForm
 from django.urls import reverse
 from django.shortcuts import redirect, render
@@ -6,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login
 
 
-def signup(request):
+def signup_view(request):
     form = SignupForm()
     redirection = render(request, 'custom_auth/signup.html', {'form': form})
     if request.method == 'POST':
@@ -23,7 +22,3 @@ def signup(request):
             redirection = redirect(reverse('customauth:home'))
 
     return redirection
-
-
-def home(request):
-    return HttpResponse('<h1>HOME</h1>')
