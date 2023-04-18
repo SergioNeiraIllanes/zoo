@@ -1,0 +1,5 @@
+<form method="post" action="{% url 'customauth:permission-create' %}">
+    {% csrf_token %}
+    {{form.as_div}}
+    <input type="submit" value="Crear">
+</form>

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from typing import Any
 from django.views.generic import View
 from django.contrib.auth.models import Permission
@@ -6,10 +7,10 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 
-class PermissionDeleteView(View):
+class PermissionDeleteView(LoginRequiredMixin, View):
 
-    def post(request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
-        pk = request.request.POST['id']
+    def post(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+        pk = self.request.POST['id']
         permission = Permission.objects.get(pk=pk)
         permission.delete()
         return redirect(reverse('customauth:permission-list'))

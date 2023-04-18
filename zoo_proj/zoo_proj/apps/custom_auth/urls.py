@@ -5,6 +5,7 @@ from zoo_proj.apps.custom_auth.views import (
     PermissionListView,
     PermissionDetailView,
     PermissionDeleteView,
+    PermissionCreateView,
 )
 
 
@@ -19,13 +20,18 @@ urlpatterns = [
         name='permission-list',
     ),
     path(
-        '<int:pk>/permission-detail/',
+        '<int:pk>/permission/detail/',
         PermissionDetailView.as_view(),
         name='permission-detail',
     ),
     path(
-        'permission-delete/',
+        'permission/delete/',
         PermissionDeleteView.as_view(),
         name='permission-delete',
+    ),
+    path(
+        'permission/create/',
+        PermissionCreateView.as_view(),
+        name='permission-create',
     )
 ]

@@ -1,4 +1,4 @@
-from zoo_proj.apps.custom_auth.forms.signup_form import SignupForm
+from zoo_proj.apps.custom_auth.forms import SignupForm
 from django.urls import reverse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
